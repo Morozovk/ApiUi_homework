@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
@@ -15,8 +17,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
     @BeforeAll
     public static void setUp() {
-        RestAssured.baseURI = "";
-        RestAssured.basePath = "";
+        RestAssured.baseURI = "https://demoqa.com/";
+        Configuration.baseUrl = "https://demoqa.com";
 
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");

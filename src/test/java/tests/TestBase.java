@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBase {
     @BeforeAll
     public static void setUp() {
-        RestAssured.baseURI = "https://demoqa.com/";
+        RestAssured.baseURI = "https://demoqa.com";
         Configuration.baseUrl = "https://demoqa.com";
 
         Configuration.browser = System.getProperty("browser", "chrome");

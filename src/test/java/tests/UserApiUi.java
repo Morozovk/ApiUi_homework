@@ -1,19 +1,12 @@
-package tests.api_ui;
+package tests;
 
-import com.codeborne.selenide.Selenide;
 import helpers.WithLogin;
 
-import model.AuthResponseModel;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePages;
 import steps.BookApiSteps;
-import tests.TestBase;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static tests.TestData.*;
 

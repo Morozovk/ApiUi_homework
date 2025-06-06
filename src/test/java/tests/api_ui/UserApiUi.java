@@ -6,6 +6,7 @@ import helpers.WithLogin;
 import model.AuthResponseModel;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.ProfilePages;
 import steps.BookApiSteps;
 import tests.TestBase;
 
@@ -18,13 +19,13 @@ import static tests.TestData.*;
 
 public class UserApiUi extends TestBase {
 
+    ProfilePages profilePages = new ProfilePages();
 
     @WithLogin
     @Test
     @Tag("Smoke")
     void login() {
-        open("/profile");
-        $("#userName-value").shouldHave(visible);
+        profilePages.openPage();
     }
 
     @WithLogin
@@ -38,11 +39,10 @@ public class UserApiUi extends TestBase {
         BookApiSteps.deleteBooks(token, userId);
         BookApiSteps.addBook(token, userId, isbn);
 
-        open("/profile");
-        $("#delete-record-undefined").click();
-        $("#closeSmallModal-ok").click();
-        sleep(3000);
-        Selenide.refresh();
-        $(".rt-noData").shouldHave(text("No rows found"));
+        profilePages.openPage()
+                    .clickOnButtonDeleteBook()
+                    .clickOnButtonCloseModal()
+                    .checkEmptyTable();
+
     }
 }

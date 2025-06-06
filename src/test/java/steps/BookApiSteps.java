@@ -7,7 +7,7 @@ import static spec.BaseSpec.requestBaseSpec;
 
 public class BookApiSteps {
 
-    public static void deleteBook(String token, String userId){
+    public static void deleteBooks(String token, String userId){
         given(requestBaseSpec)
                 .header("Authorization", "Bearer " + token)
                 .queryParams("UserId", userId)

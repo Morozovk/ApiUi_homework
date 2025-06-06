@@ -31,7 +31,7 @@ public class UserApiUi extends TestBase {
         String token = auth.getToken();
         String userId = auth.getUserId();
 
-        BookApiSteps.deleteBook(token, userId);
+        BookApiSteps.deleteBooks(token, userId);
         BookApiSteps.addBook(token, userId, isbn);
 
         open("/profile");

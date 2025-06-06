@@ -1,54 +1,28 @@
 package steps;
 
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import model.AuthResponseModel;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
-import static io.restassured.http.ContentType.JSON;
 import static java.lang.String.format;
 import static spec.BaseSpec.baseResponseSpec;
 import static spec.BaseSpec.requestBaseSpec;
-import static tests.TestData.login;
-import static tests.TestData.password;
 
 public class BookApiSteps {
 
-    @BeforeAll
-    public static void setUp() {
-        RestAssured.baseURI = "https://demoqa.com";
-    }
-
-    @Test
-    void addBookToCollectionTest() {
-
-        String authData = "{\"userName\":\"" + login + "\",\"password\":\"" + password + "\"}";
-
-        AuthResponseModel authResponse = given(requestBaseSpec)
-                .body(authData)
-                .when()
-                .post("/Account/v1/Login")
-                .then()
-                .spec(baseResponseSpec(200))
-                .extract().as(AuthResponseModel.class);
-
+    public static void deleteBook(String token, String userId){
         given(requestBaseSpec)
-                .header("Authorization", "Bearer " + authResponse.getToken())
-                .queryParams("UserId", authResponse.getUserId())
+                .header("Authorization", "Bearer " + token)
+                .queryParams("UserId", userId)
                 .when()
                 .delete("/BookStore/v1/Books")
                 .then()
                 .spec(baseResponseSpec(204));
+    }
 
-
-        String isbn = "9781449365035";
+    public static void addBook(String token, String userId, String isbn) {
         String bookData = format("{\"userId\":\"%s\",\"collectionOfIsbns\":[{\"isbn\":\"%s\"}]}",
-                authResponse.getUserId() , isbn);
+                userId, isbn);
 
         given(requestBaseSpec)
-                .header("Authorization", "Bearer " + authResponse.getToken())
+                .header("Authorization", "Bearer " + token)
                 .body(bookData)
                 .when()
                 .post("/BookStore/v1/Books")

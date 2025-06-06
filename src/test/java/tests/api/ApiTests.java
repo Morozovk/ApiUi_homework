@@ -108,28 +108,6 @@ public class ApiTests {
                         .spec(baseResponseSpec(200))
                         .extract().as(ListBookResponse.class));
     }
-
-    @Test
-    @Tag("Smoke")
-    void addBookTest(){
-        ListCollectionOfIsbns isbn = new ListCollectionOfIsbns();
-        isbn.setIsbn("9781449325862");
-
-        AddListOfBooksRequestModel requestBody = new AddListOfBooksRequestModel ();
-        requestBody.setUserId("9d6383a5-5a72-409d-8bdc-bbd8be0c163d");
-        requestBody.setListCollectionOfIsbns(Arrays.asList(isbn));
-
-        AddBookResponseModel response = step("Отправляем запрос", () ->
-                given(requestBaseSpec)
-                        .when()
-                        .body(requestBody)
-                        .post("BookStore/v1/Books")
-                        .then()
-                        .spec(baseResponseSpec(201))
-                        .extract().as(AddBookResponseModel.class));
-    }
-
-
 }
 
 

@@ -14,6 +14,8 @@ public class BaseSpec {
     public static RequestSpecification requestBaseSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
+            .log().method()
+            .log().body()
             .contentType(JSON);
 
     public static ResponseSpecification baseResponseSpec(int statusCode) {

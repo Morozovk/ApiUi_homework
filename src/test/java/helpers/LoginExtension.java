@@ -14,7 +14,7 @@ public class LoginExtension implements BeforeEachCallback {
 
     @Override
     public void beforeEach(ExtensionContext context) {
-        UserRequestBodyModel authData = new UserRequestBodyModel("KirillMorozov", "12345678@Kk");
+        UserRequestBodyModel authData = new UserRequestBodyModel("Kirill058", "12345@Kk");
 
         LoginApiSteps loginApiSteps = new LoginApiSteps();
         AuthResponseModel response = loginApiSteps.loginApiCall(authData);

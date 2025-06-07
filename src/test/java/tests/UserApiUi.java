@@ -23,6 +23,7 @@ public class UserApiUi extends TestBase {
 
     @WithLogin
     @Test
+    @Tag("Smoke")
     void deleteBook() {
 
         String token = getWebDriver().manage().getCookieNamed("token").getValue();

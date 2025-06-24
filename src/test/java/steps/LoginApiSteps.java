@@ -2,13 +2,14 @@ package steps;
 
 import model.AuthResponseModel;
 import model.UserRequestBodyModel;
+import tests.TestData;
 
 import static io.restassured.RestAssured.given;
 import static spec.BaseSpec.baseResponseSpec;
 import static spec.BaseSpec.requestBaseSpec;
 
 public class LoginApiSteps {
-    public AuthResponseModel loginApiCall(UserRequestBodyModel request){
+    public AuthResponseModel loginApiCall(UserRequestBodyModel request) {
         return given(requestBaseSpec)
             .body(request)
             .when()

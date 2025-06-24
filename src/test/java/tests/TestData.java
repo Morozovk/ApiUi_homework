@@ -1,8 +1,7 @@
 package tests;
 
 public class TestData {
-
-    public static final String login = "Kirill058",
-            password = "12345@Kk",
-            isbn = "9781449365035";
+    public static final String USERNAME = System.getProperty("USERNAME");
+    public static final String PASSWORD = System.getProperty("PASSWORD");
+    public static final String isbn = "9781449365035";
 }

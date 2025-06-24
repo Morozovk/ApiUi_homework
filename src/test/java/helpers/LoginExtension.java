@@ -7,6 +7,7 @@ import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.Cookie;
 import steps.LoginApiSteps;
+import tests.TestData;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -15,7 +16,7 @@ public class LoginExtension implements BeforeEachCallback {
     @Step("Добавляем в Cookie данные для авторизации")
     @Override
     public void beforeEach(ExtensionContext context) {
-        UserRequestBodyModel authData = new UserRequestBodyModel("Kirill058", "12345@Kk");
+        UserRequestBodyModel authData = new UserRequestBodyModel(TestData.USERNAME, TestData.PASSWORD);;
 
         LoginApiSteps loginApiSteps = new LoginApiSteps();
         AuthResponseModel response = loginApiSteps.loginApiCall(authData);

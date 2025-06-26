@@ -31,6 +31,7 @@ public class ProfilePages {
     @Step("Подтверждаем,что удаляем книгу и обновляем страницу")
     public ProfilePages clickOnButtonCloseModal(){
         buttonCloseModal.click();
+        sleep(3000);
         Selenide.refresh();
         return this;
     }
